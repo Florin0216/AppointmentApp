@@ -1,0 +1,41 @@
+﻿@model Appointment
+
+@if (TempData["WrongDate"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["WrongDate"]
+        <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@{
+    ViewData["Title"] = "Create an appointment";
+}
+<div class="card bg-dark text-white mx-auto" style="max-width: 35rem; height:40rem;">
+    <br />
+    <h1 class="text-center mb-5">Create a future appointmen</h1>
+    <br>
+    <div class="d-flex justify-content-center">
+        <form method="post">
+            <div class="form-floating mb-3" style="width:25rem;">
+                <input asp-for="AppointmentName" type="text" class="form-control bg-dark text-white" placeholder="Name of the appointment" />
+                <label class="form-label">Name of the appointment</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Date" type="date" class="form-control bg-dark text-white" placeholder="Date">
+                <label class="form-label">Date of the appointment</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="DoctorName" type="text" class="form-control bg-dark text-white" placeholder="Name of the Doctor">
+                <label class="form-label">Name of the doctor</label>
+            </div>
+            <div class="form-floating mb-5">
+                <input asp-for="Price" type="number" class="form-control bg-dark text-white" placeholder="Price(lei)">
+                <label class="form-label">Price(lei)</label>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-lg btn-light text-black" style="width:200px;">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

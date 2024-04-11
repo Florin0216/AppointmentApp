@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Appointment>
+
+@{
+    ViewData["Title"] = "List of Appointments";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="mb-3">Appointment List</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="ListOfAppointments" asp-action="Create" class="btn btn-dark"><span class="bi bi-plus-circle"> Create Appoinment</span></a>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+            @foreach (var obj in Model)
+            {
+            <div class="col-xs-6  col-sm-3 col-md-3 mb-3">
+                <div class="card" style="width: 18rem; border:1px solid;">
+                    <div class="card-body bg-light " style="border-radius: 15px;">
+                        <h4 class="card-title text-center bg-light text-black"><span class="bi bi-file-earmark-medical">@obj.AppointmentName</span></h4>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-dark text-white">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Date Of The Appointment</div>
+                                @obj.Date.ToString("dd-MM-yyyy")
+                            </div>
+                        </li>
+                        <li class="list-group-item bg-dark text-white">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Docotor's Name</div>
+                                @obj.DoctorName
+                            </div>
+                        </li>
+                        <li class="list-group-item bg-dark text-white">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Price(lei)</div>
+                                @obj.Price
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="card-body bg-dark text-white">
+                        <a asp-controller="ListOfAppointments" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-light text-black"><i class="bi bi-pencil-square"> Edit</i></a>
+                        <a asp-controller="ListOfAppointments" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-light text-black"><i class="bi bi-trash"> Delete</i></a>
+                    </div>
+                </div>
+            </div>
+            }
+    </div>
+</div>
